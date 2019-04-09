@@ -39,3 +39,9 @@ luac.out
 *.x86_64
 *.hex
 
+
+# idea
+*.iml
+.idea/
+.DS_Store/
+.profile
