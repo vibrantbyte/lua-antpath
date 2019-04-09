@@ -45,3 +45,5 @@ luac.out
 .idea/
 .DS_Store/
 .profile
+*.so
+lua2go.lua
