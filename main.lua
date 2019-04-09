@@ -13,7 +13,7 @@ lua2go.Externs[[
    extern GoInt32 Match(GoString pattern,GoString path);
    extern GoInt32 MatchStart(GoString pattern,GoString path);
    extern GoString ExtractPathWithinPattern(GoString pattern,GoString path);
-   extern GoMap ExtractUriTemplateVariables(GoString pattern,GoString path);
+   extern GoSlice ExtractUriTemplateVariables(GoString pattern,GoString path);
    extern GoString Combine(GoString pattern1,GoString pattern2);
    extern GoChan SetPathSeparator(GoString pathSeparator);
    extern GoChan SetCaseSensitive(GoInt32 caseSensitive);
@@ -22,19 +22,36 @@ lua2go.Externs[[
  ]]
 
 local version = antpath.Version()
-
+print("--------------------------")
 local v = lua2go.ToLuaString(version.p)
 print(v)
-
+print("--------------------------")
 local bn = antpath.Match(lua2go.ToGoString("/*/1.html"),lua2go.ToGoString("/100/1.html"))
 if bn then
     print(true)
 else
     print(false)
 end
-
+print("--------------------------")
 local combine = antpath.Combine(lua2go.ToGoString("/hotels/*"),lua2go.ToGoString("/booking"))
 print(lua2go.ToLuaString(combine.p))
+
+print("--------------------------")
+local start = antpath.MatchStart(lua2go.ToGoString("/*/1.html"),lua2go.ToGoString("/100/1.html"))
+print(start)
+
+print("--------------------------")
+local variable = antpath.ExtractPathWithinPattern(lua2go.ToGoString("/docs/cvs/*.html"),lua2go.ToGoString("/docs/cvs/commit.html"))
+print(lua2go.ToLuaString(variable))
+
+print("--------------------------")
+--local map = antpath.ExtractUriTemplateVariables(lua2go.ToGoString("/hotels/{hotel}"),lua2go.ToGoString("/hotels/11232"))
+
+print("--------------------------")
+
+
+print("--------------------------")
+
 
 
 
