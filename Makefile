@@ -2,6 +2,8 @@
 # 定义变量 project名称
 project=cgoantpath
 goantpathproject=github.com/vibrantbyte/go-antpath
+goantpath-version=v1.1.1
+lua2go-version=v1.0
 
 .PHONY: all clean wget build install goal
 
@@ -16,14 +18,18 @@ before:
 ifeq ($(GOROOT), )
 	@echo "请注意！！！需要安装go编译环境。"
 else
-	@go get -u ${goantpathproject}
-	@rm -rf ./lib${project}.so ./lua2go.lua
+	@git clone --branch ${goantpath-version} https://github.com/vibrantbyte/go-antpath.git
+	# remove the go-antpath project in gopath.
+	@rm -rf $(GOPATH)/src/${goantpathproject}
+	# move to GOPATH
+	@mv ./go-antpath/ $(GOPATH)/src/${goantpathproject}
+	@rm -rf ./lib${project}.so ./lua2go.lua 
 endif
 
 wget: goal
 	@echo "get from internet"
-	@wget https://raw.githubusercontent.com/vibrantbyte/go-antpath/v1.1/antpath.go
-	@wget https://raw.githubusercontent.com/vibrantbyte/lua2go/v1.0/lua/lua2go.lua
+	@wget https://raw.githubusercontent.com/vibrantbyte/go-antpath/${goantpath-version}/antpath.go
+	@wget https://raw.githubusercontent.com/vibrantbyte/lua2go/${lua2go-version}/lua/lua2go.lua
 
 build: goal
 	@echo "execute script"
