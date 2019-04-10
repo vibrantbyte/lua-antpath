@@ -93,7 +93,7 @@ print(data.hotel)
 lua2go.AddToGC(map.p)
 
 
--- 使用fExtractUriTemplateVariables函数 -- end --
+-- 使用ExtractUriTemplateVariables函数 -- end --
 
 print("--------------------------")
 

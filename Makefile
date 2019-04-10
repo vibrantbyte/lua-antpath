@@ -1,6 +1,7 @@
 # 构建go环境下的动态共享库
 # 定义变量 project名称
 project=cgoantpath
+goantpathproject=github.com/vibrantbyte/go-antpath
 
 .PHONY: all clean wget build install goal
 
@@ -15,6 +16,7 @@ before:
 ifeq ($(GOROOT), )
 	@echo "请注意！！！需要安装go编译环境。"
 else
+	@go get -u ${goantpathproject}
 	@rm -rf ./lib${project}.so ./lua2go.lua
 endif
 
