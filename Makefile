@@ -20,8 +20,8 @@ endif
 
 wget: goal
 	@echo "get from internet"
-	@wget https://raw.githubusercontent.com/vibrantbyte/go-antpath/master/antpath.go
-	@wget https://raw.githubusercontent.com/vibrantbyte/lua2go/master/lua/lua2go.lua
+	@wget https://raw.githubusercontent.com/vibrantbyte/go-antpath/v1.1/antpath.go
+	@wget https://raw.githubusercontent.com/vibrantbyte/lua2go/v1.0/lua/lua2go.lua
 
 build: goal
 	@echo "execute script"
