@@ -1,6 +1,10 @@
 # lua-antpath
 The default implementation is AntPathMatcher, supporting the  * Ant-style pattern syntax.  The description is from java spring framework.
 
+# 编译环境
+> luajit 2.1  
+go 1.9.2+
+
 # 接口
 ```go
 //export Version
