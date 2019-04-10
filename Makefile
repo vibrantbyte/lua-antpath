@@ -11,7 +11,12 @@ all: before wget build install clean
 	@echo "all is execute."
 
 before:
+#使用 ifeq不能有缩进
+ifeq ($(GOROOT), )
+	@echo "请注意！！！需要安装go编译环境。"
+else
 	rm -rf ./lib${project}.so ./lua2go.lua
+endif
 
 wget: goal
 	@echo "get from internet"
